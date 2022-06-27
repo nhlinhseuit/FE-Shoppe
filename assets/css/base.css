@@ -1,0 +1,269 @@
+:root {
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #333333;
+    --primary-color: rgb(238, 77, 45);
+    --border-color: #dbdbdb;
+    --star-gold-color: #ffce3e;
+
+    --navbar-height: 34px;
+    --header-height: 120px;
+    --header-with-search-height: calc(--header-height - --navbar-height);
+}
+
+* {
+    box-sizing: inherit;
+}
+
+html {
+    /* HACK - rem theo font size mặc định của web*/ 
+    /* 1rem = 10px, 12px = 1.2rem */
+    font-size: 62.5%;
+    line-height: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+/* RESPONSIVE */
+.grid {
+    /* doi voi man` hinh` lon hon 1200px thi chi sd width 1200px */
+    width: 1200px;
+    /* doi voi man hinh nho hon 1200px thi sd width bang 100% chieu dai man hinh */
+    max-width: 100%;
+    /* can giua khoi nay khi nao trong 1 khoi khac */
+    margin: 0 auto;
+}
+
+.grid__full-width {
+    width: 100%;
+}
+
+.grid__row {
+    display: flex;
+    flex-wrap: wrap;
+    /* vi padding khoang cach giua cac col nen tru ra lai 12px */
+    margin-left: -5px;
+    margin-right: -5px;
+
+}
+
+/* TEST - CHUAN BI CHO RESPONSIVE*/
+.grid__column-2 {
+    /* Khoang cach giua cac col */
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 16.6667%;
+}
+
+.grid__column-2-4 {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 20%;
+}
+
+.grid__column-10 {
+    /* Khoang cach giua cac col */
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 83.3334%;
+}
+
+
+
+.modal  {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    animation: fadeIn linear 0.2s;
+}
+
+.modal__overlay {
+    /* Su dung position nen duoc day len 1 lop cao hon*/
+    /* Them 1 dieu nua la body duoc viet class sau overlay nen duoc noi len tren (z indx) */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    
+}
+
+.modal__body {
+    --growth-from: 0.7;
+    --growth-to: 1;
+    
+    margin: auto;
+    position: relative;
+    z-index: 1;
+    animation: growth linear 0.1s;
+}
+
+/* BUTTON STYLE */
+.btn {
+    /* dat min width vi co the chu se rat ngan, cho do dai min co dinh */
+    min-width: 124px;
+    height: 34px;
+    border: none;
+    text-decoration: none;
+    border-radius: 2px;
+    background-color: var(--white-color);
+    font-size: 1.5rem;
+    padding: 0 12px;
+    outline: none;
+    cursor: pointer;
+    color: var(--text-color);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.6rem;
+}
+
+.btn.btn-normal:hover{
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.btn.btn--size-s {
+    height: 30px;
+    font-size: 12px;
+    padding: 0 8px;
+}
+
+/* CSS cho 1 element co ca 2 class nhu nay */
+.btn.btn--primary {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.btn.btn--disabled{
+    color: #949494;
+    cursor: default;
+    background-color: #c3c3c3;
+}
+
+/* SELECTION */
+.select-input {
+    min-width: 200px;
+    height: 34px;
+    padding: 0 12px;
+    border-radius: 2px;
+    background-color: var(--white-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    box-shadow: 0 1px 3px #ccc;
+}
+
+.select-input:hover .select-input__list{ 
+    display: block;
+}
+
+.select-input__label {
+    font-size: 1.4rem;
+}
+
+.select-input__icon {
+    font-size: 1.4rem;
+    color: rgb(131, 131, 131);
+    position: relative;
+    bottom: 0px;
+}
+
+.select-input__list {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 25px;
+    border-radius: 2px;
+    background-color: var(--white-color);
+    padding: 10px 16px;
+    list-style: none;
+    display: none;
+    animation: fadeIn ease 0.3s;
+    z-index: 1;
+}
+
+.home-filter__page {
+    margin-left: auto;
+}
+
+.home-filter__page-num {
+    font-size: 1.4rem;
+    color: var(--text-color);
+    margin-right: 22px;
+}
+
+.home-filter__page-current {
+    color: var(--primary-color);
+}
+
+.select-input__link {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1.4rem;
+    display: block;
+    padding: 5px 0;
+}
+
+.select-input__link:hover {
+    color: var(--primary-color);
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes growth {
+    from {
+        transform: scale(var(--growth-from));
+    }
+    to {
+        transform: scale(var(--growth-to));
+    }
+}
+
+/* PAGINATION */
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+
+.pagination-item {
+    margin: 0 12px;
+}
+
+.pagination-item--active .pagination-item__link {
+    color: var(--white-color);
+    background-color: var(--primary-color);
+}
+
+.pagination-item--active .pagination-item__link:hover {
+    filter: brightness(90%);
+}
+
+
+.pagination-item__link {
+    --height: 30px;
+    display: block;
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 300;
+    color: #939393;
+    min-width: 40px;
+    height: var(--height);
+    line-height: var(--height);
+    text-align: center;
+    border-radius: 2px;
+}
+
+
